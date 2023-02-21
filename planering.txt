@@ -30,6 +30,8 @@ Vad ska appen innehålla:
 	I lagvy:
 		- text högst upp som talar om ifall laget är fullt eller om man kan välja fler 
 		- större cards 3st, placeholders där det är tomt
+		- input-fält för att lägga till namn under varje card + knapp att lägga till namnet
+		- namnet ska dyka upp ovanför art-namnet, under bilden på vald pokémongit
 		- varje card har knapp för att ta bort från laget
 		- nedanför mindre cards i karusell (stor skärm) eller ruta med scroll (liten skärm)
 		- varje mindre card har knapp för att lägga till i teamet om det finns plats
