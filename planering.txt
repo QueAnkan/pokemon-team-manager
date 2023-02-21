@@ -1,0 +1,37 @@
+Arbetsstruktur:
+ 	-egna branches för vyerna
+	-bygg basstrukur
+	
+	
+	
+	css-filer
+		- bas
+		- sökvy
+		- lagvy
+		- cards?
+
+	javaScript
+		- DOM 
+		- fetch
+		- storage?
+		
+
+
+Vad ska appen innehålla:
+
+	I header:
+		- val av vy
+
+	I sökvy:
+		- input-fält med sökfunktion, textlista visas vid key up
+		-  efter val i listan visas card för vald pokémon under sökfält, knapp med "lägg till" visas och sökfältet töms
+		- lägg till i laget vid tryck på knapp "lägg till", om laget är fullt ska de hamna i reserver? Eller alltid i reserver först?
+
+	I lagvy:
+		- text högst upp som talar om ifall laget är fullt eller om man kan välja fler 
+		- större cards 3st, placeholders där det är tomt
+		- varje card har knapp för att ta bort från laget
+		- nedanför mindre cards i karusell (stor skärm) eller ruta med scroll (liten skärm)
+		- varje mindre card har knapp för att lägga till i teamet om det finns plats
+
+
