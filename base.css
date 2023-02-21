@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap');
+
+*{
+	margin: 0;
+	padding: 0 ;
+	font-family: 'Bakbak One', cursive;
+}
+
+.header{
+ background-color: #313131 ;
+ color: #4DAD5B;
+ height: 10rem;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ padding-top: 2rem;
+
+}
+
+#search, #view-team{
+	border-radius: 2em;
+	width: 8em;
+	font-size: 16px;
+	padding: 0.2em;
+	margin-top: 2.5rem;
+	background-color: #30A7D7 ;
+	border: none;
+}
