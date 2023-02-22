@@ -6,7 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Pokémon-team-builder</title>
 	<link rel="stylesheet" href="style/base.css">
-	<link rel="stylesheet" href="/search-view.css">
+	<link rel="stylesheet" href="style/search-view.css">
+	<script type="module" src="script/script.js"></script>
+	
 </head>
 <body>
 	<header class="body_header">
@@ -17,11 +19,14 @@
 		</div>
 	</header>
 	<main class="body_main">
-		<section class="search-view">
-			<h2 id="search-viewe_heading1">Sök din nästa lagmedlem</h2>
-
+		<section class="search-view_section">
+			<h2 id="search-view_heading1">Sök din nästa lagmedlem</h2>
+			<input type="text" id="search-input" placeholder="Skriv ditt sökord här"/>
+			<div id="preview-picture">
+			</div>
+		
 		</section>
-		<section class="team-view"></section>
+		<section class="team-view_section"></section>
 	</main>
 	<footer class="body_header"> 
 		<p>	Sidan skapad av: Annika Nylin</p>
