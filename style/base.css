@@ -11,7 +11,7 @@ body{
 }
 
 
-.header{
+.body_header{
  height: 10rem;
  display: flex;
  flex-direction: column;
@@ -30,8 +30,8 @@ body{
 	font-size: 16px;
 	padding: 0.2em;
 	margin-top: 1rem;
-
 	background-color: #30A7D7 ;
+	color: #F5F5F5;
 	
 }
 
@@ -43,15 +43,27 @@ body{
 	margin-left: 0.5em;
 }
 
-.body-main{
-	display:flex;
+.body_main{
 	height: 100vh;
 	width: 80vw;
+	max-width: 1024px;
 	padding:2rem;
 	margin:auto;
 	background-color: #F5F5F5;
 
 }
+
+footer{
+	height: 4rem;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: flex-start;
+	text-align: left;
+	background-color: #313131 ;
+	color: #4DAD5B;
+   
+   }
 
 
 
@@ -62,3 +74,16 @@ body{
 	}
 
 }
+
+
+@media screen and (min-width: 768px){
+	#search-btn{
+		margin-right: 2em;
+	}
+	
+	#view-team-btn{
+		margin-left: 2em;
+	}
+
+}
+
