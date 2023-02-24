@@ -23,8 +23,11 @@ html{
 }
 
 body{
+	display: flex;
+	flex-direction: column;
 	background-color:var(--ligthgrey);
 	min-height: 100%;
+
 }
 
 /* CSS för header */
@@ -41,7 +44,7 @@ body{
 
 }
 
-#search-btn, #view-team-btn{
+#search-view-btn, #team-view-btn{
 	border-radius: 2em;
 	border: none;
 	width: 8em;
@@ -53,16 +56,16 @@ body{
 	
 }
 
-#search-btn:hover, #view-team-btn:hover, #search-btn:focus, #view-team-btn:focus {
+#search-view-btn:hover, #team-view-btn:hover, #search-view-btn:focus, #team-view-btn:focus {
 	background-color: var(--lightblue);
 	cursor: pointer;
 }
 
-#search-btn{
+#search-view-btnn{
 	margin-right: 0.5em;
 }
 
-#view-team-btn{
+#team-view-btn{
 	margin-left: 0.5em;
 }
 
@@ -72,7 +75,7 @@ body{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	height: 100vh;
+	height: auto;
 	width: 80vw;
 	max-width: 1024px;
 	margin:auto;

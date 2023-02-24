@@ -1,6 +1,6 @@
 // DOM-element variabler //
-const searchBtn = document.querySelector('#search-btn')
-const viewTeamBtn = document.querySelector('#view-team-btn')
+const searchBtn = document.querySelector('#search-view-btn')
+const viewTeamBtn = document.querySelector('#team-view-btn')
 const searchViewSection = document.querySelector('.search-view_section')
 const teamViewSection = document.querySelector('.team-view_section')
 

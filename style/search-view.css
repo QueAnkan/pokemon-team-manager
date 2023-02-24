@@ -1,3 +1,13 @@
+:root{
+	--offwhite:#F5F5F5;
+	--blue:#30A7D7;
+	--lightblue: #69caf1;
+	--green:#4DAD5B;
+	--darkgrey: #313131;
+	--ligthgrey:#D9D9D9;
+	--orange: #ee6b2f;
+}
+
 .search-view_section{
 	display: flex;
 	flex-direction: column;
@@ -15,6 +25,18 @@
 	margin: 2rem;
 	padding: 0.2rem;
 	border-style:groove;
-	border-color: #D9D9D9;
+	border-color: var(--ligthgrey);
 	font-family: Arial, Helvetica, sans-serif;
+}
+
+#search-button{
+	padding: 0 1rem;
+	border-radius: 2em;
+	border: 0.02px solid var();
+	background-color: var(--ligthgrey);
+
+}
+
+#search-button:hover, #search-button:focus{
+	background-color: var(--green);
 }
