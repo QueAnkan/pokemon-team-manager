@@ -1,119 +1,108 @@
 // DOM element//
 
 const searchInput = document.querySelector('#search-input')
-// console.log(searchInput);
-// const preViewPicture = document.querySelector('#preview-picture')
-
+const preViewPicture = document.querySelector('#preview-picture')
+const pokemonsPreviewContainer = document.querySelector('#preview-picture')
 const SearchButton = document.querySelector('#search-button')
+
+
+// Här sparas all data:
+
+let pokemonList = []
+console.log('Detta sparas i variabeln pokemonList', pokemonList);
 
 // för att hämta api
 
-const nameUrl = 'https://pokeapi.co/api/v2/pokemon/?limit =20&offset=0' 
+const pokeUrl = 'https://pokeapi.co/api/v2/pokemon/?limit =20&offset=0' 
 
 
 async function getApi(url){
 	const response = await fetch(url)
 	const data = await response.json()
-	let dataResults = data.results
+	const dataResults = data.results
 	return dataResults
+	
 }
 
 
 async function renderUI(){
-	let pokemons = await getApi(nameUrl)
-	 let pokemonsPreviewContainer = document.querySelector('#preview-picture')
-console.log(pokemons);
+	const pokemons = await getApi(pokeUrl)
+	
+console.log('detta hämtas från API', pokemons);
+
 	pokemons.forEach(async pokemon => {
-		let response = await fetch(pokemon.url)
-		let data = await response.json()
-		let imgUrl = data.sprites.front_default
+		const response = await fetch(pokemon.url)
+		const data = await response.json()
 		
-let pokemonInfo = {
-	name: pokemon.name,
-	picture: imgUrl,
-}
-//  console.log(pokemonInfo);
-
-pokemonList.push(pokemonInfo)
-
+		// const imgUrl = data.sprites.front_default
 		
+		const pokemonInfo = {
+		name: data.name,
+		picture: data.sprites.front_default,
+		}
 		
-		let pokemonCard = document.createElement('article')
-		let pokemonCardImage = document.createElement('div')
-		pokemonCardImage.innerHTML = `<img src = "${imgUrl}">`
-		let pokemonCardName = document.createElement('p')
-		pokemonCardName.innerText = pokemon.name
-		let choseButton = document.createElement('button')
-		choseButton.innerText ='Lägg till'
 
-		pokemonCard.classList ='pokemon-card'
-		pokemonCardImage.classList = 'pokemon-image'
-		pokemonCardName.classList = 'pokemon-card-name'
+		pokemonList.push(pokemonInfo)
 
-
-pokemonCard.append(pokemonCardImage)
-pokemonCard.append(pokemonCardName)
-pokemonCard.append(choseButton)
-
-
-		pokemonsPreviewContainer.append(pokemonCard)
+	
 	});
 
 }
 
+// Kallar på funktionen för att hämta data från API och lägga i variabel
+
   renderUI()
 
-let pokemonList = []
-console.log(pokemonList);
+
 
 //   console.log(renderUI());
 
 
 // vad vill jag att sökfunktionen ska göra?
 	// loopa igenom variabeln pokemonCard
-	// Jämföra söksträng med name, med filter?
+	// Jämföra söksträng med name, med filter
 	// skapa en variabel med alla namn som  matchar
 	// 
 
-searchInput.addEventListener('keyup', (event) =>{ 
+// Söka på valfritt ord och matcha mot sparade data
+
+searchInput.addEventListener('keyup', async (event) =>{ 
 	 let searchString = event.target.value
 	console.log('Key up: ', searchString)
-	let names = pokemonList.filter(listitem => listitem.name == searchString)
-	console.log(names);
-	/* if(matches.includes(searchString))
-	console.log(pokemonList)
-		 */
 	
+	
+		let matches = pokemonList.filter(list => list.name.includes(searchString))
+	console.log(matches);
 
+	pokemonsPreviewContainer.innerHTML=''
+
+
+	matches.forEach(pokemonInfo =>{
+	let pokemonCard = document.createElement('article')
+	let pokemonCardImage = document.createElement('div')
+	 pokemonCardImage.innerHTML = `<img src = "${pokemonInfo.picture}" alt = "${pokemonInfo.name}">`
+	let pokemonCardName = document.createElement('p')
+	pokemonCardName.innerText = pokemonInfo.name
+	let choseButton = document.createElement('button')
+	choseButton.innerText ='Lägg till'
+
+	pokemonCard.classList ='pokemon-card'
+	pokemonCardImage.classList = 'pokemon-image'
+	pokemonCardName.classList = 'pokemon-card-name'
+
+
+	pokemonCard.append(pokemonCardImage)
+	pokemonCard.append(pokemonCardName)
+	pokemonCard.append(choseButton)
+
+
+	pokemonsPreviewContainer.append(pokemonCard)
+
+	})
 
 })
 
 
-
-/* if(!searchString){
-	console.log('ingen träff');
-}
-
-let matches = pokemonList.filter(list => list.name == searchString)
-if (matches.length) { 
-	console.log(matches)
-}
- */
-
-/* let filteredPokemons = pokemonList.filter(filtered => filtered.name == 'searchString')
-console.log(filteredPokemons);
- */
-
-
-
-/* if (pokemonList.includes(searchString)){
-console.log('hej')}
- */
-/* for (let i=0; i < pokemonList.length; i++){
-	if (searchString == pokemonList.map(names =>names.name)){
-		console.log ('hej')
-	}
-} */
 
 
 
