@@ -9,7 +9,7 @@ const searchInput = document.querySelector('#search-input')
 const pokemonsPreviewContainer = document.querySelector('#preview-picture')
 const teamViewSection = document.querySelector('.team-view_section')
 const myTeamDiv = document.querySelector('.my-team_div')
-const teamViewSectionH3Container = document.querySelector('#team-view_section_h3-container')
+const myTeamDivH3Container = document.querySelector('#my-team_div_h3-container')
 const sparePlayerDiv = document.querySelector('.spare-player_div')
 
 // här ska valda pokemons hamna
@@ -26,7 +26,7 @@ if( myTeam.length <3){
 	myTeamH3.innerText = "Fyll på ditt lag! Du kan ha 3 lagmedlemmar."
 console.log(myTeamH3);}
 else{myTeamH3.innerText = 'Grattis ditt lag är fulltaligt!'}
-	teamViewSectionH3Container.append(myTeamH3)
+	myTeamDivH3Container.append(myTeamH3)
 
 
 // Toggla mellan vyerna
@@ -108,6 +108,9 @@ searchInput.addEventListener('keyup', async (event) =>{
 		if (myTeam.length <2 ){
 			myTeam.unshift(pokemonToAdd)
 
+// //// Här börjar kod för det som visas i lag-vy  ///////////
+
+// lägger till i mitt lag
 
 			myTeam.forEach( pokemonInfo=> {
 				let pokemonTeamCard = document.createElement('article')
@@ -140,6 +143,8 @@ searchInput.addEventListener('keyup', async (event) =>{
 			
 			})
 		
+// lägger till i reserver
+
 		} else {mySparePokemons.unshift(pokemonToAdd)
 
 
@@ -181,43 +186,14 @@ searchInput.addEventListener('keyup', async (event) =>{
 })
 
 
-// //// Här börjar kod för lag-vy  ///////////
+// ////// detta behöver göras:
 
-// Skapa h2 element
-/*  if (myTeam.length <3) {teamViewSectionH2.innerText = "Fyll på ditt lag! Du kan ha 3 lagmedlemmar."   }
-
- {teamViewSectionH2.innerText = 'Grattis ditt lag är fulltaligt!'}
- */
-// visa myTeam genom att:
-// skapa likadana cards som ovan, men med inputfält och "ta bort"-knapp istället
-// append på HTML-div 
-
-/* myTeam.forEach( pokemonInfo=> {
-	let pokemonTeamCard = document.createElement('article')
-	let pokemonTeamCardImage = document.createElement('div')
-	 pokemonTeamCardImage.innerHTML = `<img src = "${pokemonInfo.picture}" alt = "${pokemonInfo.name}">`
-	let pokemonTeamCardName = document.createElement('p')
-	pokemonTeamCardName.innerText = pokemonInfo.name
-	let nameYourPokemon = document.createElement('input')
-	let removeFromTeam = document.createElement('button')
-
-
-	pokemonTeamCard.classList ='pokemon-card'
-	pokemonTeamCardImage.classList = 'pokemon-image'
-	pokemonTeamCardName.classList = 'pokemon-card-name'
-	nameYourPokemon.classList = 'name-your-pokemon-input'
-	removeFromTeam.classList = 'remove-from-team-button'
-
-	pokemonTeamCard.append(pokemonTeamCardImage)
-	pokemonTeamCard.append(pokemonTeamCardImage)
-	pokemonTeamCard.append(pokemonTeamCardName)
-	pokemonTeamCard.append(nameYourPokemon)
-	pokemonTeamCard.append(removeFromTeam)
-
-	myTeamDiv.append(pokemonTeamCard)
+/* 	
+	-få det att funka så man inte får med första pokemonen två ggr
+	-meddelande när man lägger till en pokemon (var den hamnar) som visas en kort stund  
+	-funktioner för knapparna på team-view sidan
 	
-}) */
+	
+	*/
 
-// visa reserver genom samma manöver
 
-/* mySparePokemons.forEach */
