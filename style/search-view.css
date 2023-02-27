@@ -24,7 +24,9 @@
 .pokemon-card{
 	display:flex;
 	flex-direction: column;
-	margin: 2rem 0;
+	align-items: center;
+	width: fit-content;
+	margin: 2rem auto;
 	padding: 0 2rem 1rem 2rem;
 	background-color: var(--ligthgrey);
 	box-shadow: 0.08rem 0.08rem 0.08rem 0.08rem hsl(0, 0%, 67%);
@@ -38,21 +40,22 @@
 
 }
 
-.pokemon-card-button{
+.pokemon-card-add-button{
 	padding: 0 1rem;
 	border-radius: 2em;
 	border: none;
-	padding: 0.2em 1em;
+	padding: 0.2em 0;
 	margin-top: 1rem;
+	width:5em;
 	background-color: var(--green);
 	box-shadow: 0.2rem 0.2rem 0.2rem hsl(44, 0%, 45%);
 }
 
-.pokemon-card-button:hover, .pokemon-card-button:focus{
+.pokemon-card-add-button:hover, .pokemon-card-add-button:focus{
 	background-color: var(--lightgreen);
 	
 }
 
-.pokemon-card-button:active{
+.pokemon-card-add-button:active{
 	box-shadow: 0.1rem 0.1rem 0.2rem hsl(44, 0%, 45%);
 }

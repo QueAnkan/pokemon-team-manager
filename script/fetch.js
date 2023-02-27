@@ -17,20 +17,20 @@ async function getApi(url){
 async function renderUI(){
 	const pokemons = await getApi(pokeUrl)
 	
-console.log('detta hämtas från API', pokemons);
+// console.log('detta hämtas från API', pokemons);
 
 	pokemons.forEach(async pokemon => {
 		const response = await fetch(pokemon.url)
 		const data = await response.json()
 		
 		
-		const pokemon = {
+		const pokemonInfo = {
 		name: data.name,
 		picture: data.sprites.front_default,
 		}
 		
 
-		pokemonList.push(pokemon)
+		pokemonList.push(pokemonInfo)
 
 	
 	});
@@ -39,7 +39,7 @@ console.log('detta hämtas från API', pokemons);
 
 // Här sparas all hämtad data:
 let pokemonList = []
-console.log('Detta sparas i variabeln pokemonList', pokemonList);
+console.log('Detta hämtas och sparas i variabeln pokemonList', pokemonList);
 
 
 

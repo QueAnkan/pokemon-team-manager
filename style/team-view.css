@@ -1,3 +1,5 @@
+@import './base.css';
+
 .team-view_section{
 	display:none;
 	width: 80vw;
@@ -12,51 +14,73 @@
 	margin-bottom: 1rem;
 }
 
-.chosen-team-section{
+.my-team_div{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: aquamarine;
-	
 }
 
-.team-view_section  div {
+.name-your-pokemon-input{
+	margin-top: 2rem;
+	padding: 0.2rem 0;
+	width:8.5em;
+	border-style:groove;
+	border-color: var(--ligthgrey);
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.remove-from-team-button{
+padding: 0 1rem;
+	border-radius: 2em;
+	border: none;
+	padding: 0.2em 0;
+	margin-top: 1rem;
+	width:5em;
+	background-color: var(--orange);
+	box-shadow: 0.2rem 0.2rem 0.2rem hsl(44, 0%, 45%);
+}
+
+.remove-from-team-button:hover, .remove-from-team-button.focus{
+	background-color: var(--lightorange);
+}
+
+.remove-from-team-button:active{
+box-shadow: 0.1rem 0.1rem 0.2rem hsl(44, 0%, 45%);
+}
+
+/* .team-view_section  div {
 	height: 12rem;
 	width: 10rem;
 	margin: 3rem;
 	background-color: #D9D9D9;
 }
-
+ */
 
 @media screen and (min-width: 768px) {
-	.chosen-team-section{
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-	}
+	
 
-	.team-view_section  div {
+/* 	.team-view_section  div {
 		height: 9rem;
 		width: 7.5rem;
 		margin: 3rem;
 		background-color: #D9D9D9;
-	}
+	} */
 	
 }
 
 @media screen and (min-width: 1024px) {
-	.chosen-team-section{
+	.my-team_div{
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
 		
 	}
 	
-	.team-view_section  div {
+	/* .team-view_section  div {
 		height: 12rem;
 		width: 10rem;
 		margin: 3rem;
 		background-color: #D9D9D9;
-	}
+	} */
 	
 }
