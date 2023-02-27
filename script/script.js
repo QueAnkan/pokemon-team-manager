@@ -6,12 +6,13 @@ const searchBtn = document.querySelector('#search-view-btn')
 const viewTeamBtn = document.querySelector('#team-view-btn')
 const searchViewSection = document.querySelector('.search-view_section')
 const searchInput = document.querySelector('#search-input')
-const pokemonsPreviewContainer = document.querySelector('#preview-picture')
+const pokemonsPreviewContainer = document.querySelector('#preview-pictures-container')
 const teamViewSection = document.querySelector('.team-view_section')
 const myTeamDiv = document.querySelector('.my-team_div')
 const myTeamDivH3Container = document.querySelector('#my-team_div_h3-container')
 const sparePlayerDiv = document.querySelector('.spare-player_div')
-
+const addedPokemonContainer = document.querySelector ('#added-pokemon-text-container')
+console.log('Här ska bekräftelse visas', addedPokemonContainer);
 // här ska valda pokemons hamna
 let myTeam =[]
 console.log('Här visas pokemon tillagd i mitt lag', myTeam);
@@ -22,7 +23,7 @@ console.log('Här visas pokemon i reservlaget', mySparePokemons);
 
 
 let myTeamH3 = document.createElement('h3') 
-if( myTeam.length <3){
+if( myTeam.length <2){
 	myTeamH3.innerText = "Fyll på ditt lag! Du kan ha 3 lagmedlemmar."
 console.log(myTeamH3);}
 else{myTeamH3.innerText = 'Grattis ditt lag är fulltaligt!'}
@@ -110,7 +111,7 @@ searchInput.addEventListener('keyup', async (event) =>{
 
 // //// Här börjar kod för det som visas i lag-vy  ///////////
 
-// lägger till i mitt lag
+// visar mitt lag
 
 			myTeam.forEach( pokemonInfo=> {
 				let pokemonTeamCard = document.createElement('article')
@@ -123,14 +124,13 @@ searchInput.addEventListener('keyup', async (event) =>{
 					nameYourPokemon.maxLength = 10
 				let removeFromTeam = document.createElement('button')
 					removeFromTeam.innerText = 'Ta bort'
-		
-		
+				
 				pokemonTeamCard.classList ='pokemon-card'
 				pokemonTeamCardImage.classList = 'pokemon-image'
 				pokemonTeamCardName.classList = 'pokemon-card-name'
 				nameYourPokemon.classList = 'name-your-pokemon-input'
 				removeFromTeam.classList = 'remove-from-team-button'
-			
+				
 				
 
 				pokemonTeamCard.append(pokemonTeamCardImage)
@@ -140,14 +140,23 @@ searchInput.addEventListener('keyup', async (event) =>{
 				pokemonTeamCard.append(removeFromTeam)
 			
 				myTeamDiv.append(pokemonTeamCard)
-			
+				
+
+				
 			})
+			let addedPokemon = document.createElement('p')
+				addedPokemon.textContent = 'Pokémon tillagd i ditt lag!'
+				addedPokemon.classList = 'added-to-team-text'
+				addedPokemonContainer.append(addedPokemon)
+				setTimeout(() => {
+					addedPokemon.remove();
+				}, 1500);
 		
 // lägger till i reserver
 
 		} else {mySparePokemons.unshift(pokemonToAdd)
 
-
+// visar reserver
 			let pokemonTeamCard = document.createElement('article')
 			let pokemonTeamCardImage = document.createElement('div')
 				pokemonTeamCardImage.innerHTML = `<img src = "${pokemonInfo.picture}" alt = "${pokemonInfo.name}">`
@@ -178,6 +187,13 @@ searchInput.addEventListener('keyup', async (event) =>{
 				pokemonTeamCard.append(pokemonCardAddButton)
 				sparePlayerDiv.append(pokemonTeamCard)
 
+				let addedPokemonSpare = document.createElement('p')
+				addedPokemonSpare.textContent = 'Laget är fullt! Pokémon tillagd som reserv'
+				addedPokemonSpare.classList = 'added-to-spare-text'
+				addedPokemonContainer.append(addedPokemonSpare)
+				setTimeout(() => {
+					addedPokemonSpare.remove();
+				}, 2000);
 		}
 	}) 
 
@@ -192,8 +208,10 @@ searchInput.addEventListener('keyup', async (event) =>{
 	-få det att funka så man inte får med första pokemonen två ggr
 	-meddelande när man lägger till en pokemon (var den hamnar) som visas en kort stund  
 	-funktioner för knapparna på team-view sidan
+	-funktion för att nickname ska läggas till
 	
 	
 	*/
 
 
+	
