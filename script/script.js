@@ -11,6 +11,7 @@ const teamViewSection = document.querySelector('.team-view_section')
 const myTeamDivH3Container = document.querySelector('#my-team_div_h3-container')
 const addedPokemonContainer = document.querySelector ('#added-pokemon-text-container')
 console.log('Här ska bekräftelse visas', addedPokemonContainer);
+
 // här ska valda pokemons hamna
 let myTeam =[]
 console.log('Här visas pokemon tillagd i mitt lag', myTeam);
@@ -21,17 +22,20 @@ console.log('Här visas pokemon i reservlaget', mySparePokemons);
 
 
 
+// skapar textelement för lagstatus
 
-
-let myTeamH3 = document.createElement('h3') 
+const myTeamH3 = document.createElement('h3') 
 myTeamH3.innerText = "Fyll på ditt lag! Du kan ha 3 lagmedlemmar."
-let myTeamH3Full =document.createElement('h3')
+const myTeamH3Full =document.createElement('h3')
 myTeamH3Full.innerText= 'Grattis ditt lag är fulltaligt!'
+
 myTeamDivH3Container.append(myTeamH3Full)
 	myTeamDivH3Container.append(myTeamH3)
 	myTeamH3Full.style.display = 'none'
 	myTeamH3.style.display = 'none'
 	
+
+	// Visar lagstatus, om du kan fylla på fler i laget eller ej
 
 function showTeamStatus(){
 	
@@ -120,6 +124,7 @@ searchInput.addEventListener('keyup', async (event) =>{
 
 			
 			createAddedToTeamMessage()	
+			
 
 // lägger till i reserver
 
@@ -134,6 +139,10 @@ searchInput.addEventListener('keyup', async (event) =>{
 		renderSpareTeam()
 		showTeamStatus()
 		
+		pokemonCardAddButton.disabled = true; setTimeout(()=>{
+			pokemonCardAddButton.disabled = false
+		}, 1700)
+
 	}) 
 	
 	})
@@ -146,8 +155,8 @@ function createAddedToTeamMessage(){
 	addedPokemon.classList = 'added-to-team-text'
 	addedPokemonContainer.append(addedPokemon)
 	setTimeout(() => {
-		addedPokemon.remove();
-	}, 1500);
+		addedPokemon.remove();	
+	}, 1700);
 }
 
 	function createAddedToSpareMessage(){
@@ -157,7 +166,7 @@ function createAddedToTeamMessage(){
 				addedPokemonContainer.append(addedPokemonSpare)
 				setTimeout(() => {
 					addedPokemonSpare.remove();
-				}, 2000);
+				}, 1700);
 
 	}
 

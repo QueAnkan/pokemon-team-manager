@@ -34,8 +34,9 @@ async function renderUI(){
 
 	
 	});
+	}
 
-}
+
 
 // Här sparas all hämtad data:
 let pokemonList = []

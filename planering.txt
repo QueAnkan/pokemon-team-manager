@@ -49,18 +49,13 @@ måndag 27/2
 
  detta behöver göras:
 
--få det att funka så man inte får med första pokemonen två ggr
 
-	-meddelande när man lägger till en pokemon (var den hamnar) som visas en kort stund  
 
-	-funktioner för knapparna på team-view sidan
-
-	-funktion för att nickname ska läggas till
 	
 	 -border-top till reserver syns inte
 
-	 -hindra knappar när meddelanderutan är uppe 
-
-	 - centrera meddelanderutan på skärmen
+	 
 
 	- säkerhet!
+
+	-Glöm inte ändra antal för hämta API
