@@ -50,12 +50,6 @@ måndag 27/2
  detta behöver göras:
 
 
-
-	
-	 -border-top till reserver syns inte
-
-	 
-
 	- säkerhet!
 
 	-Glöm inte ändra antal för hämta API

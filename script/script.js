@@ -35,20 +35,7 @@ myTeamDivH3Container.append(myTeamH3Full)
 	myTeamH3.style.display = 'none'
 	
 
-	// Visar lagstatus, om du kan fylla på fler i laget eller ej
-
-function showTeamStatus(){
 	
-if( myTeam.length <3){
-	myTeamH3.style.display ='block'
-	myTeamH3Full.style.display = 'none'
-}
-else{
-	myTeamH3Full.style.display ='block'
-	myTeamH3.style.display = 'none'
-}
-	
-}
 
 	
 
@@ -149,6 +136,30 @@ searchInput.addEventListener('keyup', async (event) =>{
 
 })
 
+
+
+// /////Här ligger funktioner just nu////////////
+
+
+
+// Visar lagstatus, om du kan fylla på fler i laget eller ej
+
+function showTeamStatus(){
+	
+	if( myTeam.length <3){
+		myTeamH3.style.display ='block'
+		myTeamH3Full.style.display = 'none'
+	}
+	else{
+		myTeamH3Full.style.display ='block'
+		myTeamH3.style.display = 'none'
+	}
+		
+	}
+
+
+// Meddelande lagt till i ditt lag
+
 function createAddedToTeamMessage(){
 	let addedPokemon = document.createElement('p')
 	addedPokemon.textContent = 'Pokémon tillagd i ditt lag!'
@@ -158,6 +169,8 @@ function createAddedToTeamMessage(){
 		addedPokemon.remove();	
 	}, 1700);
 }
+
+// Meddelande lagt till i reserv
 
 	function createAddedToSpareMessage(){
 		let addedPokemonSpare = document.createElement('p')
@@ -171,7 +184,7 @@ function createAddedToTeamMessage(){
 	}
 
 
-
+// Skapar bilder till mitt lag
 
 function renderMyTeam(){
 
@@ -216,6 +229,7 @@ function renderMyTeam(){
 						showTeamStatus()
 		}) 
 	
+		// Input-fältet för att döpa pokémon
 nameYourPokemon.addEventListener('keypress', function (e){
 if (e.key === 'Enter'){
 	let nickname = nameYourPokemon.value
@@ -228,6 +242,8 @@ if (e.key === 'Enter'){
 })
 }
 
+// Skapar bilder till reserver
+
 function renderSpareTeam(){
 
 	const sparePlayerDiv = document.querySelector('.spare-player_div')
@@ -235,7 +251,7 @@ sparePlayerDiv.innerHTML = ''
 	mySparePokemons.forEach(pokemonInfo => {
 	let pokemonTeamCard = document.createElement('article')
 	let pokemonTeamCardImage = document.createElement('div')
-		pokemonTeamCardImage.innerHTML = `<img src = "${pokemonInfo.picture}" alt = "${pokemonInfo.name}">`		
+		pokemonTeamCardImage.innerHTML = `<img src = "${pokemonInfo.picture}" alt = "${pokemonInfo.name}">`
 	let pokemonTeamCardName = document.createElement('p')
 		pokemonTeamCardName.innerText = pokemonInfo.name
 	let nameYourPokemon = document.createElement('input')
