@@ -20,12 +20,33 @@ console.log('Här visas pokemon i reservlaget', mySparePokemons);
 
 
 
+
+
+
 let myTeamH3 = document.createElement('h3') 
-if( myTeam.length <3){
-	myTeamH3.innerText = "Fyll på ditt lag! Du kan ha 3 lagmedlemmar."
-console.log(myTeamH3);}
-else{myTeamH3.innerText= 'Grattis ditt lag är fulltaligt!'}
+myTeamH3.innerText = "Fyll på ditt lag! Du kan ha 3 lagmedlemmar."
+let myTeamH3Full =document.createElement('h3')
+myTeamH3Full.innerText= 'Grattis ditt lag är fulltaligt!'
+myTeamDivH3Container.append(myTeamH3Full)
 	myTeamDivH3Container.append(myTeamH3)
+	myTeamH3Full.style.display = 'none'
+	myTeamH3.style.display = 'none'
+	
+
+function showTeamStatus(){
+	
+if( myTeam.length <3){
+	myTeamH3.style.display ='block'
+	myTeamH3Full.style.display = 'none'
+}
+else{
+	myTeamH3Full.style.display ='block'
+	myTeamH3.style.display = 'none'
+}
+	
+}
+
+	
 
 
 // Toggla mellan vyerna
@@ -97,7 +118,7 @@ searchInput.addEventListener('keyup', async (event) =>{
 		if (myTeam.length <3 ){
 			myTeam.unshift(pokemonInfo)
 
-
+			
 			createAddedToTeamMessage()	
 
 // lägger till i reserver
@@ -111,8 +132,10 @@ searchInput.addEventListener('keyup', async (event) =>{
 		}
 		renderMyTeam()
 		renderSpareTeam()
+		showTeamStatus()
+		
 	}) 
-
+	
 	})
 
 })
@@ -181,6 +204,7 @@ function renderMyTeam(){
 			myTeam.splice(myTeam.indexOf (pokemonInfo), 1)
 						renderMyTeam()
 						renderSpareTeam()
+						showTeamStatus()
 		}) 
 	
 nameYourPokemon.addEventListener('keypress', function (e){
@@ -235,7 +259,9 @@ sparePlayerDiv.innerHTML = ''
 						myTeam.unshift(pokemonInfo)
 						mySparePokemons.splice(mySparePokemons.indexOf (pokemonInfo), 1)
 						renderMyTeam()
-						renderSpareTeam()
+						renderSpareTeam
+						()
+						showTeamStatus()
 					}
 				}) 
 
@@ -244,7 +270,7 @@ sparePlayerDiv.innerHTML = ''
 					console.log('remove knapp');
 					myTeam.pop(pokemonInfo)
 					pokemonTeamCard.remove()
-
+					showTeamStatus()
 		}) 
 
 	});
