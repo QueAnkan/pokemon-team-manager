@@ -58,3 +58,9 @@ måndag 27/2
 	-funktion för att nickname ska läggas till
 	
 	 -border-top till reserver syns inte
+
+	 -hindra knappar när meddelanderutan är uppe 
+
+	 - centrera meddelanderutan på skärmen
+
+	- säkerhet!

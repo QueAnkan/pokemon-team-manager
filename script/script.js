@@ -8,9 +8,7 @@ const searchViewSection = document.querySelector('.search-view_section')
 const searchInput = document.querySelector('#search-input')
 const pokemonsPreviewContainer = document.querySelector('#preview-pictures-container')
 const teamViewSection = document.querySelector('.team-view_section')
-const myTeamDiv = document.querySelector('.my-team_div')
 const myTeamDivH3Container = document.querySelector('#my-team_div_h3-container')
-const sparePlayerDiv = document.querySelector('.spare-player_div')
 const addedPokemonContainer = document.querySelector ('#added-pokemon-text-container')
 console.log('Här ska bekräftelse visas', addedPokemonContainer);
 // här ska valda pokemons hamna
@@ -23,10 +21,10 @@ console.log('Här visas pokemon i reservlaget', mySparePokemons);
 
 
 let myTeamH3 = document.createElement('h3') 
-if( myTeam.length <2){
+if( myTeam.length <3){
 	myTeamH3.innerText = "Fyll på ditt lag! Du kan ha 3 lagmedlemmar."
 console.log(myTeamH3);}
-else{myTeamH3.innerText = 'Grattis ditt lag är fulltaligt!'}
+else{myTeamH3.innerText= 'Grattis ditt lag är fulltaligt!'}
 	myTeamDivH3Container.append(myTeamH3)
 
 
@@ -104,114 +102,172 @@ searchInput.addEventListener('keyup', async (event) =>{
 
 	// lägger till pokemon i mitt lag 
 	pokemonCardAddButton.addEventListener('click', (event) =>{
-		const pokemonToAdd = matches.find(pokemonInfo =>pokemonInfo.name === event.target.previousSibling.innerText)
-		console.log('click på add.knapp', myTeam.length, mySparePokemons.length);
-		if (myTeam.length <2 ){
-			myTeam.unshift(pokemonToAdd)
+	/* 	const pokemonToAdd = matches.find(pokemonInfo =>pokemonInfo.name === event.target.previousSibling.innerText) */
+		// console.log('click på add.knapp', myTeam.length, mySparePokemons.length);
+		if (myTeam.length <3 ){
+			myTeam.unshift(pokemonInfo)
 
+			createAddedToTeamMessage()
+			
+	
 // //// Här börjar kod för det som visas i lag-vy  ///////////
 
 // visar mitt lag
 
-			myTeam.forEach( pokemonInfo=> {
-				let pokemonTeamCard = document.createElement('article')
-				let pokemonTeamCardImage = document.createElement('div')
-					pokemonTeamCardImage.innerHTML = `<img src = "${pokemonInfo.picture}" alt = "${pokemonInfo.name}">`
-				let pokemonTeamCardName = document.createElement('p')
-					pokemonTeamCardName.innerText = pokemonInfo.name
-				let nameYourPokemon = document.createElement('input')
-					nameYourPokemon.placeholder = 'Döp din pokémon!'
-					nameYourPokemon.maxLength = 10
-				let removeFromTeam = document.createElement('button')
-					removeFromTeam.innerText = 'Ta bort'
-				
-				pokemonTeamCard.classList ='pokemon-card'
-				pokemonTeamCardImage.classList = 'pokemon-image'
-				pokemonTeamCardName.classList = 'pokemon-card-name'
-				nameYourPokemon.classList = 'name-your-pokemon-input'
-				removeFromTeam.classList = 'remove-from-team-button'
-				
-				
-
-				pokemonTeamCard.append(pokemonTeamCardImage)
-				pokemonTeamCard.append(pokemonTeamCardImage)
-				pokemonTeamCard.append(pokemonTeamCardName)
-				pokemonTeamCard.append(nameYourPokemon)
-				pokemonTeamCard.append(removeFromTeam)
-			
-				myTeamDiv.append(pokemonTeamCard)
-				
-
-				
-			})
-			let addedPokemon = document.createElement('p')
-				addedPokemon.textContent = 'Pokémon tillagd i ditt lag!'
-				addedPokemon.classList = 'added-to-team-text'
-				addedPokemonContainer.append(addedPokemon)
-				setTimeout(() => {
-					addedPokemon.remove();
-				}, 1500);
 		
 // lägger till i reserver
 
-		} else {mySparePokemons.unshift(pokemonToAdd)
-
+		} else {
+			mySparePokemons.unshift(pokemonInfo)
+			createAddedToSpareMessage()
+			
 // visar reserver
-			let pokemonTeamCard = document.createElement('article')
-			let pokemonTeamCardImage = document.createElement('div')
-				pokemonTeamCardImage.innerHTML = `<img src = "${pokemonInfo.picture}" alt = "${pokemonInfo.name}">`
-			let pokemonNickname = document.createElement('p')
-				 pokemonNickname.innerText = ''			
-			let pokemonTeamCardName = document.createElement('p')
-				pokemonTeamCardName.innerText = pokemonInfo.name
-			let nameYourPokemon = document.createElement('input')
-				nameYourPokemon.placeholder = 'Döp din pokémon!'
-			let removeFromTeam = document.createElement('button')
-				removeFromTeam.innerText = 'Ta bort'
-				let pokemonCardAddButton = document.createElement('button')
-				pokemonCardAddButton.innerText ='Lägg till'
-
-
-				pokemonTeamCard.classList ='pokemon-card'
-				pokemonTeamCardImage.classList = 'pokemon-image'
-				pokemonTeamCardName.classList = 'pokemon-card-name'
-				nameYourPokemon.classList = 'name-your-pokemon-input'
-				removeFromTeam.classList = 'remove-from-team-button'
-				pokemonCardAddButton.classList = 'pokemon-card-add-button'
-
-				pokemonTeamCard.append(pokemonTeamCardImage)
-				pokemonTeamCard.append(pokemonNickname)
-				pokemonTeamCard.append(pokemonTeamCardName)
-				pokemonTeamCard.append(nameYourPokemon)
-				pokemonTeamCard.append(removeFromTeam)
-				pokemonTeamCard.append(pokemonCardAddButton)
-				sparePlayerDiv.append(pokemonTeamCard)
-
-				let addedPokemonSpare = document.createElement('p')
-				addedPokemonSpare.textContent = 'Laget är fullt! Pokémon tillagd som reserv'
-				addedPokemonSpare.classList = 'added-to-spare-text'
-				addedPokemonContainer.append(addedPokemonSpare)
-				setTimeout(() => {
-					addedPokemonSpare.remove();
-				}, 2000);
+			
 		}
+		renderMyTeam()
+		renderSpareTeam()
 	}) 
 
 	})
 
 })
 
+function createAddedToTeamMessage(){
+	let addedPokemon = document.createElement('p')
+	addedPokemon.textContent = 'Pokémon tillagd i ditt lag!'
+	addedPokemon.classList = 'added-to-team-text'
+	addedPokemonContainer.append(addedPokemon)
+	setTimeout(() => {
+		addedPokemon.remove();
+	}, 1500);
+}
 
-// ////// detta behöver göras:
+	function createAddedToSpareMessage(){
+		let addedPokemonSpare = document.createElement('p')
+				addedPokemonSpare.textContent = 'Laget är fullt! Pokémon tillagd som reserv'
+				addedPokemonSpare.classList = 'added-to-spare-text'
+				addedPokemonContainer.append(addedPokemonSpare)
+				setTimeout(() => {
+					addedPokemonSpare.remove();
+				}, 2000);
 
-/* 	
-	-få det att funka så man inte får med första pokemonen två ggr
-	-meddelande när man lägger till en pokemon (var den hamnar) som visas en kort stund  
-	-funktioner för knapparna på team-view sidan
-	-funktion för att nickname ska läggas till
+	}
+
+
+
+
+function renderMyTeam(){
+
+	const myTeamDiv = document.querySelector('.my-team_div')
+	myTeamDiv.innerHTML =''
+	myTeam.forEach( pokemonInfo=> {
+		let pokemonTeamCard = document.createElement('article')
+		let pokemonTeamCardImage = document.createElement('div')
+			pokemonTeamCardImage.innerHTML = `<img src = "${pokemonInfo.picture}" alt = "${pokemonInfo.name}">`
+		let pokemonTeamCardName = document.createElement('p')
+			pokemonTeamCardName.innerText = pokemonInfo.name
+		let nameYourPokemon = document.createElement('input')
+			nameYourPokemon.placeholder = 'Döp din pokémon!'
+			nameYourPokemon.maxLength = 10
+		let removeFromTeam = document.createElement('button')
+			removeFromTeam.innerText = 'Ta bort'
+		
+		pokemonTeamCard.classList ='pokemon-card'
+		pokemonTeamCardImage.classList = 'pokemon-image'
+		pokemonTeamCardName.classList = 'pokemon-card-name'
+		nameYourPokemon.classList = 'name-your-pokemon-input'
+		removeFromTeam.classList = 'remove-from-team-button'
+		
+		pokemonTeamCard.append(pokemonTeamCardImage)
+		pokemonTeamCard.append(pokemonTeamCardImage)
+		pokemonTeamCard.append(pokemonTeamCardName)
+		pokemonTeamCard.append(nameYourPokemon)
+		pokemonTeamCard.append(removeFromTeam)
 	
+		myTeamDiv.append(pokemonTeamCard)
 	
-	*/
+	})
+
+	/* removeFromTeam.addEventListener('click', (event) =>{
+		const pokemonToRemove = myTeam.find(pokemonInfo =>pokemonInfo.name === event.target.previousSibling.previousSibling.innerText)
+		console.log('remove knapp');
+		myTeam.pop(pokemonToRemove)
+		//  for(let i=myTeam.length-1; i >=0; --i){
+		// 	if( myTeam[i].field == pokemonInfo.name){
+		// 		myTeam.splice(i,1)
+		// 	}
+		// } 
+		// pokemonTeamCard.remove()
+		// console.log(pokemonToRemove);
+	}) */
+
+
+}
+
+
+
+
+function renderSpareTeam(){
+
+	const sparePlayerDiv = document.querySelector('.spare-player_div')
+sparePlayerDiv.innerHTML = ''
+	mySparePokemons.forEach(pokemonInfo => {
+	let pokemonTeamCard = document.createElement('article')
+	let pokemonTeamCardImage = document.createElement('div')
+		pokemonTeamCardImage.innerHTML = `<img src = "${pokemonInfo.picture}" alt = "${pokemonInfo.name}">`
+	let pokemonNickname = document.createElement('p')
+		 pokemonNickname.innerText = ''			
+	let pokemonTeamCardName = document.createElement('p')
+		pokemonTeamCardName.innerText = pokemonInfo.name
+	let nameYourPokemon = document.createElement('input')
+		nameYourPokemon.placeholder = 'Döp din pokémon!'
+	let pokemonCardAddButton = document.createElement('button')
+		pokemonCardAddButton.innerText ='Lägg till'
+
+
+	let removeFromTeam = document.createElement('button')
+		removeFromTeam.innerText = 'Ta bort'
+		
+		pokemonTeamCard.classList ='pokemon-card'
+		pokemonTeamCardImage.classList = 'pokemon-image'
+		pokemonTeamCardName.classList = 'pokemon-card-name'
+		nameYourPokemon.classList = 'name-your-pokemon-input'
+		pokemonCardAddButton.classList = 'pokemon-card-add-button'
+		removeFromTeam.classList = 'remove-from-team-button'
+		
+
+		pokemonTeamCard.append(pokemonTeamCardImage)
+		pokemonTeamCard.append(pokemonNickname)
+		pokemonTeamCard.append(pokemonTeamCardName)
+		pokemonTeamCard.append(nameYourPokemon)
+		pokemonTeamCard.append(pokemonCardAddButton)
+		pokemonTeamCard.append(removeFromTeam)
+		sparePlayerDiv.append(pokemonTeamCard)
+
+		
+
+	});
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 
 
 	
