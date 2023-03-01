@@ -53,3 +53,5 @@ måndag 27/2
 	- säkerhet!
 
 	-Glöm inte ändra antal för hämta API
+
+	-knapp för att lägga till nickname

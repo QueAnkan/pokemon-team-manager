@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap');
 
-
-
 :root{
 	--offwhite:#F5F5F5;
 	--blue:#30A7D7;
@@ -12,6 +10,8 @@
 	--orange: #ee6b2f;
 	--lightgreen:#6cd67c;
 	--lightorange:#ee8b2f;
+	--darkyellow: #fcd500;
+	--lightyellow:#ffec7f;
 }
 
 *{
@@ -31,7 +31,6 @@ body{
 	flex-direction: column;
 	background-color:var(--ligthgrey);
 	min-height: 100%;
-
 }
 
 /* CSS för header */
@@ -56,8 +55,7 @@ body{
 	padding: 0.2em;
 	margin-top: 1rem;
 	background-color: var(--blue);
-	color: var(--darkgrey);
-	
+	color: var(--darkgrey);	
 }
 
 #search-view-btn:hover, #team-view-btn:hover, #search-view-btn:focus, #team-view-btn:focus {
@@ -85,7 +83,6 @@ body{
 	margin:auto;
 	background-color: var(--offwhite);
 	color: var(--darkgrey);
-
 }
 
 /* CSS för footer */
@@ -100,33 +97,33 @@ body{
 	padding: 2rem;
 	background-color: var(--darkgrey) ;
 	color: var(--offwhite);
-   }
+}
 
    .body_footer >*{
 	margin-bottom: 0.5rem;
-   }
+}
 
    #github-link{
 	margin-left: 0.5rem;
 	margin-top: 0.3rem;
-   }
+}
+
    a:link{
 	color: var(--offwhite);
-   }
+}
 
    a:visited{
 	color: var(--orange)
-   }
+}
 
 
 /* Anpassning för när texten inte längre wrappar */
 
 @media screen and (min-width: 336px){
 
-	#search-btn, #view-team-btn{
-		margin-top: 2em;
+	#search-view-btn, #team-view-btn{
+		margin-top: 3.8em;
 	}
-
 }
 
 
@@ -140,6 +137,5 @@ body{
 	#view-team-btn{
 		margin-left: 2em;
 	}
-
 }
 

@@ -11,7 +11,6 @@
 	margin:0;
 	text-align: center;
 	
-	
 }
 #search-input{
 	margin: 2rem 0 1rem 0;
@@ -31,15 +30,15 @@
 	height: 2rem;
 	width: 20rem;
 	position:fixed;
-	top:50%;
+	top:28%;
 	left:50%;
 }
 
 .added-to-team-text{
 	border:2px solid var(--green);
 	border-radius: 0.5rem;
-	padding: 0.3em;
-	width:fit-content;
+	padding: 1em;
+	width:15rem;
 	text-align: center;
 	margin: 0 auto;
 	background-color: var(--lightgreen);
@@ -49,7 +48,7 @@
 	border:1px solid var(--orange);
 	border-radius: 0.5rem;
 	padding: 0.3em;
-	width:fit-content;
+	width: 15rem;
 	margin: 0 auto;
 	text-align: center;
 	background-color: var(--lightorange);
@@ -58,7 +57,6 @@
 #preview-pictures-container{
 	display: flex;
 	flex-direction: column;
-
 }
 
 .pokemon-card{
@@ -86,12 +84,13 @@
 
 .pokemon-card-add-button:hover, .pokemon-card-add-button:focus{
 	background-color: var(--lightgreen);
-	
 }
 
 .pokemon-card-add-button:active{
 	box-shadow: 0.1rem 0.1rem 0.2rem hsl(44, 0%, 45%);
 }
+
+/* kod för mellanstor skärm */
 
 @media screen and (min-width: 768px) {
 	#preview-pictures-container{
@@ -101,10 +100,10 @@
 		gap: 1.4rem;
 		max-width: 600px;
 		margin: 0 auto;
-
 	}
-	}
+}
 
+/* kod för stor skärm */
 
 @media screen and (min-width: 1024px){
 	#preview-pictures-container{

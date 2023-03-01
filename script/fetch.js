@@ -1,10 +1,19 @@
 export {renderUI}
 export {pokemonList}
 
-// för att hämta api
+// Variabel för att hämta api
 
 const pokeUrl = 'https://pokeapi.co/api/v2/pokemon/?limit =20&offset=0' 
 
+// Här sparas all hämtad data:
+let pokemonList = []
+
+console.log('Detta hämtas och sparas i variabeln pokemonList', pokemonList);
+
+
+
+
+// Hämtar Data från API
 
 async function getApi(url){
 	const response = await fetch(url)
@@ -14,11 +23,11 @@ async function getApi(url){
 	
 }
 
+// Sorterar ut önskad data och samlas i array
+
 async function renderUI(){
 	const pokemons = await getApi(pokeUrl)
 	
-// console.log('detta hämtas från API', pokemons);
-
 	pokemons.forEach(async pokemon => {
 		const response = await fetch(pokemon.url)
 		const data = await response.json()
@@ -32,14 +41,8 @@ async function renderUI(){
 
 		pokemonList.push(pokemonInfo)
 
-	
-	});
-	}
+	})
+}
 
-
-
-// Här sparas all hämtad data:
-let pokemonList = []
-console.log('Detta hämtas och sparas i variabeln pokemonList', pokemonList);
 
 

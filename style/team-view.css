@@ -7,7 +7,6 @@
 	padding: 2rem 0 2rem 0;
 	margin:0;
 	text-align: center;
-	
 }
 
 #team-view_section_heading1{
@@ -26,12 +25,30 @@
 	padding: 0.2rem 0;
 	width:8.5em;
 	border-style:groove;
+	border-radius: 0.3rem;
 	border-color: var(--ligthgrey);
 	font-family: Arial, Helvetica, sans-serif;
 }
 
+.name-your-pokemon-button{
+	margin-top: 0.5rem;
+	border-radius: 2em;
+	border: none;
+	padding: 0.1em 0;
+	width: 4rem;
+	background-color: var(--darkyellow);
+	box-shadow: 0.2rem 0.2rem 0.2rem hsl(44, 0%, 45%);
+}
+
+.name-your-pokemon-button:hover, .name-your-pokemon-button:focus{
+	background-color: var(--lightyellow);
+}
+
+.name-your-pokemon-button:active{
+box-shadow: 0.1rem 0.1rem 0.2rem hsl(44, 0%, 45%);
+}
+
 .remove-from-team-button{
-padding: 0 1rem;
 	border-radius: 2em;
 	border: none;
 	padding: 0.2em 0;
@@ -58,11 +75,7 @@ box-shadow: 0.1rem 0.1rem 0.2rem hsl(44, 0%, 45%);
 	width:15rem;
 }
 
-/* .spare-player_div{
-margin-top: 2rem;
-
-} */
-
+/* Kod för mellanstor skärm */
 
 @media screen and (min-width: 768px) and (max-width:1023px) {
 	.my-team_div{
@@ -98,7 +111,7 @@ margin-top: 2rem;
 	}
 }
 
-
+/* Kod för stor skärm */
 
 @media screen and (min-width: 1024px) {
 	.my-team_div{
