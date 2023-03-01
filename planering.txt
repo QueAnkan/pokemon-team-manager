@@ -54,4 +54,6 @@ måndag 27/2
 
 	-Glöm inte ändra antal för hämta API
 
-	-knapp för att lägga till nickname
+-placeholder info
+
+nickname på reserver!!
