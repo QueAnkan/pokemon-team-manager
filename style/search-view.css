@@ -71,6 +71,15 @@
 	box-shadow: 0.08rem 0.08rem 0.08rem 0.08rem hsl(0, 0%, 67%);
 }
 
+
+.pokemon-card-abilities{
+	font-size: 0.8rem;
+	width:5rem;
+	text-align: left;
+	text-overflow: clip;
+}
+
+
 .pokemon-card-add-button{
 	padding: 0 1rem;
 	border-radius: 2em;
@@ -89,6 +98,7 @@
 .pokemon-card-add-button:active{
 	box-shadow: 0.1rem 0.1rem 0.2rem hsl(44, 0%, 45%);
 }
+
 
 /* kod för mellanstor skärm */
 

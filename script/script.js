@@ -82,18 +82,29 @@ searchInput.addEventListener('keyup', async (event) =>{
 		pokemonCardImage.innerHTML = `<img src = "${pokemon.picture}" alt = "${pokemon.name}">`
 		let pokemonCardName = document.createElement('p')
 		pokemonCardName.innerText = pokemon.name
+		let pokemonCardAbilities = document.createElement('ul')
+		pokemonCardAbilities.innerText = 'Förmågor: '
+
+		pokemon.abilities.forEach(ability =>{
+			let abilityList = document.createElement('li')
+			abilityList.innerText = ability
+			pokemonCardAbilities.appendChild(abilityList)
+		})
+
 		let pokemonCardAddButton = document.createElement('button')
 		pokemonCardAddButton.innerText ='Lägg till'
 
 		pokemonCard.classList ='pokemon-card'
 		pokemonCardImage.classList = 'pokemon-image'
 		pokemonCardName.classList = 'pokemon-card-name'
+		pokemonCardAbilities.classList = 'pokemon-card-abilities'
 		pokemonCardAddButton.classList = 'pokemon-card-add-button'
 
 	// fäst färdiga cards i sökvyn
-
+	
 		pokemonCard.append(pokemonCardImage)
 		pokemonCard.append(pokemonCardName)
+		pokemonCard.append(pokemonCardAbilities)
 		pokemonCard.append(pokemonCardAddButton)
 
 		pokemonsPreviewContainer.append(pokemonCard)
@@ -197,21 +208,50 @@ function renderMyTeam(){
 			nameYourPokemonButton.innerText = 'Döp mig!'
 		let removeFromTeam = document.createElement('button')
 			removeFromTeam.innerText = 'Ta bort'
-		
+		let changeButtonDiv = document.createElement('div')
+		let beforeButton = document.createElement('button')
+			beforeButton.innerText = '<'
+		let nextButton = document.createElement('button')	
+			nextButton.innerText = '>'
 		pokemonTeamCard.classList ='pokemon-card'
 		pokemonTeamCardImage.classList = 'pokemon-image'
 		pokemonTeamCardName.classList = 'pokemon-card-name'
 		nameYourPokemon.classList = 'name-your-pokemon-input'
 		nameYourPokemonButton.classList = 'name-your-pokemon-button'
 		removeFromTeam.classList = 'remove-from-team-button'
+		changeButtonDiv.classList = 'change-place-button-div'
+		beforeButton.classList = 'change-place-button'
+		nextButton.classList = 'change-place-button'
+
+		beforeButton.addEventListener('click,', function(){
+			console.log('klick');
+		   let prevSibling = pokemonTeamCard.previousElementSibling
+		   if(prevSibling !== null){
+	   myTeamDiv.insertBefore(prevSibling, pokemonCard)
+		   }
+	   
+		})
+
+		nextButton.addEventListener('click,', function(){
+			
+			let nextSibling = pokemonTeamCard.nextElementSibling
+			if(nextSibling !== null){
+		myTeamDiv.insertBefore(nextSibling, pokemonCard)
+			}
 		
+		 })
+ 
+
+		changeButtonDiv.append(beforeButton)
+		changeButtonDiv.append(nextButton)
 		pokemonTeamCard.append(pokemonTeamCardImage)
 		pokemonTeamCard.append(pokemonNickname)
 		pokemonTeamCard.append(pokemonTeamCardName)
 		pokemonTeamCard.append(nameYourPokemon)
 		pokemonTeamCard.append(nameYourPokemonButton)
 		pokemonTeamCard.append(removeFromTeam)
-	
+		pokemonTeamCard.append(changeButtonDiv)
+
 		myTeamDiv.append(pokemonTeamCard)
 
 		// om det finns ett nickname sedan tidigare
@@ -320,3 +360,6 @@ function renderSpareTeam(){
 	})
 }
 	
+
+ 
+

@@ -28,6 +28,9 @@ async function getApi(url){
 		errorMessage.innerText = 'Något gick fel, uppdatera sidan eller försök igen om en liten stund.'
 		let bodyHeader = document.querySelector('.body_header')
 		bodyHeader.append(errorMessage)
+		setTimeout(() => {
+			errorMessage.remove();	
+		}, 3000);
 		return null
 	}
 	
@@ -47,13 +50,20 @@ async function renderUI(){
 	pokemons.forEach(async pokemon => {
 		// const response = await fetch(pokemon.url)
 		const data = await getApi(pokemon.url) // response.json()
+
+		const abilitiesArray = []
+	
+		data.abilities.forEach(ability =>{
+			const abilities = ability.ability.name
+
+			 abilitiesArray.push(abilities)
+		})
+
 		pokemon.picture = data.sprites.front_default
-		// todo: abilities
+		pokemon.abilities = abilitiesArray
 		
 		pokemonList.push(pokemon)
 
 	})
 }
-
-
 
