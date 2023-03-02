@@ -77,7 +77,9 @@
 	width:5rem;
 	text-align: left;
 	text-overflow: clip;
+	list-style: none;
 }
+
 
 
 .pokemon-card-add-button{

@@ -47,13 +47,8 @@ Temorära anteckningar :
 
 måndag 27/2 
 
- detta behöver göras:
 
-
-	- säkerhet!
-
-	-Glöm inte ändra antal för hämta API
 
 -placeholder info
 
-nickname på reserver!!
+abilities på team och reserv!
