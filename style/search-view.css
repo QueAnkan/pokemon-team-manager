@@ -67,17 +67,23 @@
 	margin: 2rem auto;
 	padding: 0 2rem 1rem 2rem;
 	border-radius: 0.3rem;
-	background-color: var(--ligthgrey);
+	background-color: rgb(198, 249, 198);
 	box-shadow: 0.08rem 0.08rem 0.08rem 0.08rem hsl(0, 0%, 67%);
 }
 
+.pokemon-card-name{
+	border-style: ridge;
+	width:6rem;
+	padding: 0 0.5rem;
+}
 
 .pokemon-card-abilities{
 	font-size: 0.8rem;
-	width:5rem;
+	width:6rem;
+	padding: 0 0.5rem;
 	text-align: left;
-	text-overflow: clip;
 	list-style: none;
+	border-style: ridge;
 }
 
 

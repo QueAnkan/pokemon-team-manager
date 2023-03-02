@@ -67,12 +67,16 @@ box-shadow: 0.1rem 0.1rem 0.2rem hsl(44, 0%, 45%);
 }
 
 .before-button{
-	margin-right: 3rem;
+	margin-top: 0.5rem;
+	margin-right: 2rem;
+	padding: 0 0.5em;
 
 }
 
 .next-button{
-	margin-left: 3rem;
+	margin-top: 0.5rem;
+	margin-left: 2rem;
+	padding: 0 0.5em;
 }
 
 #spare-player_div_h3{

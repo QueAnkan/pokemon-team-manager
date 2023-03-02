@@ -280,7 +280,7 @@ function renderMyTeam(){
 		nameYourPokemonButton.addEventListener('click', () =>{
 				let nickname = nameYourPokemon.value
 				pokemon.nickname = nameYourPokemon.value
-				pokemonNickname.innerText = nickname
+				pokemonNickname.innerText =  nickname 
 				nameYourPokemon.value =''
 		})	
 
