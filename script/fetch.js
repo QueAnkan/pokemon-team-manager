@@ -8,9 +8,6 @@ const pokeUrl = 'https://pokeapi.co/api/v2/pokemon?limit=1000&offset=0/'
 // Här sparas all hämtad data:
 let pokemonList = []
 
-console.log('Detta hämtas och sparas i variabeln pokemonList', pokemonList);
-
-
 
 
 // Hämtar Data från API

@@ -119,7 +119,7 @@ function renderMyTeam(){
 
 		// funktion på knapparna för att byta plats
 		beforeButton.addEventListener('click', () =>{
-			console.log('jag klickade');
+
 			let previousSibling = pokemonCard.previousElementSibling
 			if(previousSibling !== null){
 				myTeamDiv.insertBefore(previousSibling, pokemonCard.nextSibling)
@@ -127,7 +127,7 @@ function renderMyTeam(){
 		})
 
 		nextButton.addEventListener('click', () =>{
-			console.log('jag klickade igen');
+			
 			let nextSibling = pokemonCard.nextElementSibling
 			if(nextSibling !== null){
 				myTeamDiv.insertBefore(nextSibling, pokemonCard)
@@ -251,7 +251,6 @@ function renderSpareTeam(){
 
 		removeFromTeam.addEventListener('click', () =>{
 			
-			console.log('remove knapp')
 			myTeam.pop(pokemon)
 			pokemonCard.remove()
 			showTeamStatus()
