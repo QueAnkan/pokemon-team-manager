@@ -3,7 +3,7 @@ export {pokemonList}
 
 // Variabel för att hämta api
 
-const pokeUrl = 'https://pokeapi.co/api/v2/pokemon/'
+const pokeUrl = 'https://pokeapi.co/api/v2/pokemon?limit=1000&offset=0/'
 
 // Här sparas all hämtad data:
 let pokemonList = []

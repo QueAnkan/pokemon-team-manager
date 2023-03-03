@@ -11,6 +11,7 @@ import { pokemonList } from "./fetch.js"
 
 
 // DOM-element variabler //
+
 const searchBtn = document.querySelector('#search-view-btn')
 const viewTeamBtn = document.querySelector('#team-view-btn')
 const searchViewSection = document.querySelector('.search-view_section')
@@ -22,7 +23,7 @@ const addedPokemonContainer = document.querySelector ('#added-pokemon-text-conta
 // console.log('Här ska bekräftelse visas', addedPokemonContainer);
 
 
-// skapar textelement för lagstatus
+// skapar och fäster textelement för lagstatus i lagvy
 	const myTeamH3 = document.createElement('h3') 
 	myTeamH3.innerText = "Fyll på ditt lag! Du kan ha 3 lagmedlemmar."
 	const myTeamH3Full =document.createElement('h3')
@@ -65,8 +66,6 @@ renderUI()
 searchInput.addEventListener('keyup', async (event) =>{ 
 	 let searchString = event.target.value.toLowerCase()
 	
-	if(searchInput.value.length >2){
-		
 			let matches = pokemonList.filter(list => list.name.includes(searchString))
 
 		// töm containern för varje ny matchning
@@ -110,7 +109,7 @@ searchInput.addEventListener('keyup', async (event) =>{
 
 
 			// lägger till pokemon i mitt lag 
-			pokemonCardAddButton.addEventListener('click', (event) =>{
+			pokemonCardAddButton.addEventListener('click', () =>{
 			
 				if (myTeam.length <3 ){
 					myTeam.push({...pokemon})
@@ -123,6 +122,8 @@ searchInput.addEventListener('keyup', async (event) =>{
 					createAddedToSpareMessage()
 				}
 
+				// kallar på funktioner för att visa cards och lagstatus
+
 				renderMyTeam()
 				renderSpareTeam()
 				showTeamStatus()
@@ -134,7 +135,6 @@ searchInput.addEventListener('keyup', async (event) =>{
 			}) 
 		
 		})
-	}
 })
 
 
@@ -160,7 +160,7 @@ function showTeamStatus(){
 }
 
 
-// Meddelande lagt till i ditt lag
+// Meddelande att du lagt till i ditt lag
 
 function createAddedToTeamMessage(){
 	let addedPokemon = document.createElement('p')
@@ -172,7 +172,7 @@ function createAddedToTeamMessage(){
 	}, 1000);
 }
 
-// Meddelande lagt till i reserv
+// Meddelande att du lagt till i reserv
 
 function createAddedToSpareMessage(){
 	let addedPokemonSpare = document.createElement('p')
@@ -231,6 +231,7 @@ function renderMyTeam(){
 		beforeButton.classList = 'before-button'
 		nextButton.classList = 'next-button'
 
+		// funktion på knapparna för att byta plats
 		beforeButton.addEventListener('click', () =>{
 			console.log('jag klickade');
 			let previousSibling = pokemonCard.previousElementSibling
@@ -247,6 +248,7 @@ function renderMyTeam(){
 			}
 		})
  
+		// fäst färdiga cards i lagvyn
 		changeButtonDiv.append(beforeButton)
 		changeButtonDiv.append(nextButton)
 		pokemonCard.append(pokemonCardImage)
@@ -274,7 +276,6 @@ function renderMyTeam(){
 				pokemonNickname.innerText = nickname
 				nameYourPokemon.value =''
 				}
-
 			})
 	
 		nameYourPokemonButton.addEventListener('click', () =>{
@@ -294,9 +295,6 @@ function renderMyTeam(){
 			renderSpareTeam()
 			showTeamStatus()
 		}) 
-	
-
-
 	})
 }
 
@@ -317,11 +315,11 @@ function renderSpareTeam(){
 		let pokemonCardAbilities = document.createElement('ul')
 			pokemonCardAbilities.innerText = 'Förmågor: '
 
-		pokemon.abilities.forEach(ability =>{
-			let abilityList = document.createElement('li')
-			abilityList.innerText = ability
-			pokemonCardAbilities.appendChild(abilityList)
-		})
+			pokemon.abilities.forEach(ability =>{
+				let abilityList = document.createElement('li')
+				abilityList.innerText = ability
+				pokemonCardAbilities.appendChild(abilityList)
+			})
 
 		let nameYourPokemon = document.createElement('input')
 			nameYourPokemon.placeholder = 'Döp din pokémon!'
@@ -332,46 +330,45 @@ function renderSpareTeam(){
 		let removeFromTeam = document.createElement('button')
 			removeFromTeam.innerText = 'Ta bort'
 			
-			pokemonCard.classList ='pokemon-card'
-			pokemonCardImage.classList = 'pokemon-image'
-			pokemonCardName.classList = 'pokemon-card-name'
-			pokemonCardAbilities.classList = 'pokemon-card-abilities'
-			pokemonCardAddButton.classList = 'pokemon-card-add-button'
-			removeFromTeam.classList = 'remove-from-team-button'
-			
+		pokemonCard.classList ='pokemon-card'
+		pokemonCardImage.classList = 'pokemon-image'
+		pokemonCardName.classList = 'pokemon-card-name'
+		pokemonCardAbilities.classList = 'pokemon-card-abilities'
+		pokemonCardAddButton.classList = 'pokemon-card-add-button'
+		removeFromTeam.classList = 'remove-from-team-button'
+		
+		// fäst färdiga cards i lagvyn
+		pokemonCard.append(pokemonCardImage)
+		pokemonCard.append(pokemonNickname)
+		pokemonCard.append(pokemonCardName)
+		pokemonCard.append(pokemonCardAbilities)
+		pokemonCard.append(pokemonCardAddButton)
+		pokemonCard.append(removeFromTeam)
+		sparePlayerDiv.append(pokemonCard)
+		
+		if(pokemon.nickname){
+			pokemonNickname.innerText = pokemon.nickname
+		}
 
-			pokemonCard.append(pokemonCardImage)
-			pokemonCard.append(pokemonNickname)
-			pokemonCard.append(pokemonCardName)
-			pokemonCard.append(pokemonCardAbilities)
-			pokemonCard.append(pokemonCardAddButton)
-			pokemonCard.append(removeFromTeam)
-			sparePlayerDiv.append(pokemonCard)
-			
-			if(pokemon.nickname){
-				pokemonNickname.innerText = pokemon.nickname
-			}
-
-			
-			pokemonCardAddButton.addEventListener('click', () =>{
-			
-				if (myTeam.length <3 ){
-					myTeam.unshift({...pokemon})
-					mySparePokemons.splice(mySparePokemons.indexOf (pokemon), 1)
-					renderMyTeam()
-					renderSpareTeam()
-					showTeamStatus()
-				}
-			}) 
-
-			removeFromTeam.addEventListener('click', () =>{
-				
-				console.log('remove knapp')
-				myTeam.pop(pokemon)
-				pokemonCard.remove()
+		// För att lägga till i mitt lag från reservlaget
+		pokemonCardAddButton.addEventListener('click', () =>{
+		
+			if (myTeam.length <3 ){
+				myTeam.unshift({...pokemon})
+				mySparePokemons.splice(mySparePokemons.indexOf (pokemon), 1)
+				renderMyTeam()
+				renderSpareTeam()
 				showTeamStatus()
-			}) 
+			}
+		}) 
 
+		removeFromTeam.addEventListener('click', () =>{
+			
+			console.log('remove knapp')
+			myTeam.pop(pokemon)
+			pokemonCard.remove()
+			showTeamStatus()
+		}) 
 	})
 }
 	
