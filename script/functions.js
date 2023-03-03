@@ -98,7 +98,7 @@ function renderMyTeam(){
 		let nameYourPokemonButton = document.createElement('button')
 			nameYourPokemonButton.innerText = 'Döp mig!'
 		let removeFromTeam = document.createElement('button')
-			removeFromTeam.innerText = 'Ta bort'
+			removeFromTeam.innerText = 'Kicka ut'
 		let changeButtonDiv = document.createElement('div')
 		let beforeButton = document.createElement('button')
 			beforeButton.innerText = '<'
